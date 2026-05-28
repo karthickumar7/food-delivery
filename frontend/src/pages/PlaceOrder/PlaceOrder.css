@@ -1,0 +1,136 @@
+.place-order {
+    margin: 80px 0px;
+}
+
+.place-order-form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: max(8vw, 45px);
+}
+
+.place-order-left {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.place-order-left .title {
+    margin-bottom: 20px;
+    color: #262626;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.place-order-left input,
+.place-order-left select {
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: tomato;
+    padding: 12px;
+    color: #555;
+    font-size: 15px;
+}
+
+.place-order-left input::placeholder {
+    color: #8a8a8a;
+}
+
+.place-order-message {
+    color: #555;
+    font-size: 14px;
+}
+
+.multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+.place-order-right {
+    width: 100%;
+    max-width: 430px;
+}
+
+.place-order-right .cart-total {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.place-order-right .cart-total h2 {
+    color: #262626;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.place-order-right .cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #555;
+}
+
+.place-order-right .cart-total hr {
+    height: 1px;
+    margin: 10px 0px;
+    border: none;
+    background-color: #e2e2e2;
+}
+
+.place-order-right .cart-total button {
+    width: max(15vw, 200px);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 0px;
+    background-color: tomato;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.place-order-right .cart-total button:hover:not(:disabled) {
+    background-color: #e94728;
+}
+
+.place-order-right .cart-total button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.place-order-right .cart-total button {
+    margin-top: 10px;
+}
+
+@media (max-width: 850px) {
+    .place-order {
+        margin: 45px 0px;
+    }
+
+    .place-order-form {
+        flex-direction: column;
+    }
+
+    .place-order-left,
+    .place-order-right {
+        max-width: 100%;
+    }
+
+    .place-order-right .cart-total button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .multi-fields {
+        flex-direction: column;
+    }
+
+    .place-order-left .title {
+        font-size: 26px;
+    }
+}

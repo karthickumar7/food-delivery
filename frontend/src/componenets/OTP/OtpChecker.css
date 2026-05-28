@@ -1,0 +1,104 @@
+.otp-page {
+    min-height: calc(100vh - 180px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 16px;
+    text-align: center;
+    background:
+        radial-gradient(circle at top left, rgba(255, 99, 71, 0.14), transparent 32%),
+        linear-gradient(135deg, #fff8f4 0%, #f7fbff 100%);
+}
+
+.otp-title {
+    margin-bottom: 10px;
+    color: #202124;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.otp-phone {
+    margin-bottom: 28px;
+    color: #4b5563;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.otp-container {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    width: min(100%, 360px);
+    padding: 24px;
+    border: 1px solid rgba(32, 33, 36, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 18px 45px rgba(20, 28, 38, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.otp-input {
+    width: clamp(50px, 14vw, 64px);
+    aspect-ratio: 1;
+    text-align: center;
+    color: #1f2937;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 700;
+    line-height: 1;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    background: #ffffff;
+    caret-color: #ff6347;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.otp-input:hover {
+    border-color: #ffc2b6;
+}
+
+.otp-input:focus {
+    border-color: #ff6347;
+    box-shadow: 0 0 0 4px rgba(255, 99, 71, 0.16);
+    transform: translateY(-2px);
+}
+
+.otp-message {
+    margin-top: 18px;
+    color: #c2410c;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.otp-verify-button {
+    width: min(100%, 260px);
+    height: 48px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #ff6347;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.otp-verify-button:hover {
+    background: #ef4f32;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+    .otp-page {
+        min-height: calc(100vh - 140px);
+        padding-inline: 8px;
+    }
+
+    .otp-container {
+        gap: 10px;
+        padding: 18px;
+    }
+}

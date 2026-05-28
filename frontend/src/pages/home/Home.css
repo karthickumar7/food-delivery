@@ -1,0 +1,22 @@
+.quick-searches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0px 0px 28px;
+}
+
+.quick-searches button {
+    border: 1px solid #e2e2e2;
+    border-radius: 999px;
+    padding: 9px 16px;
+    background: #fff;
+    color: #49557e;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.quick-searches button:hover {
+    border-color: tomato;
+    color: tomato;
+    background: #fff4f2;
+}

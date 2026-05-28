@@ -1,0 +1,146 @@
+.login-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.login-popup-container {
+    width: min(92vw, 380px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 28px 30px;
+    border-radius: 8px;
+    background-color: white;
+    color: #454545;
+    animation: fadeIn 0.35s ease;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.login-popup-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.login-popup-title h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #262626;
+}
+
+.login-popup-title img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.login-popup-input {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.login-popup-input input {
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    outline: none;
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #333;
+}
+
+.login-popup-input input:focus {
+    border-color: tomato;
+}
+
+.login-popup-container button {
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    background-color: tomato;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.login-popup-container button:hover {
+    background-color: #e94728;
+}
+
+.login-popup-container button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.login-popup-container button:active {
+    transform: scale(0.98);
+}
+
+.login-popup-message {
+    margin-top: -8px;
+    color: tomato;
+    font-size: 14px;
+}
+
+.login-popup-condition {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: -6px;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.login-popup-condition input {
+    margin-top: 3px;
+    accent-color: tomato;
+    cursor: pointer;
+}
+
+.signInorLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.signInorLogin h4 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: 400;
+    color: #555;
+}
+
+.signInorLogin span {
+    color: tomato;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .login-popup {
+        padding: 14px;
+    }
+
+    .login-popup-container {
+        gap: 18px;
+        padding: 24px 20px;
+    }
+
+    .login-popup-title h2 {
+        font-size: 22px;
+    }
+}
