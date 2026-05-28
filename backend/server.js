@@ -8,24 +8,48 @@ import orderRouter from "./routes/orderRoute.js"
 const app = express()
 const PORT = process.env.PORT || 4000
 const otpStore = {};
+mongoose.set("bufferCommands", false)
+
 app.use(cors())
 app.use(express.json())
-app.use("/api/users", userRouter)
-app.use("/api/orders", orderRouter)
 
 app.get("/", (req, res) => {
   res.send("API is running")
 })
 
+app.get("/health", (req, res) => {
+  res.json({
+    success: true,
+    api: "running",
+    database: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+  })
+})
+
+const requireDBConnection = (req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      success: false,
+      message: "Database not connected. Check MONGO_URI and MongoDB Atlas network access.",
+    })
+  }
+
+  next()
+}
+
+app.use("/api/users", requireDBConnection, userRouter)
+app.use("/api/orders", requireDBConnection, orderRouter)
+
 const connectDB = async () => {
-  const mongoUri = process.env.MONGO_URI
+  const mongoUri = process.env.MONGO_URI?.trim()
 
   if (!mongoUri) {
     console.log("MONGO_URI is not set. Server started without database connection.")
     return
   }
 
-  await mongoose.connect(mongoUri)
+  await mongoose.connect(mongoUri, {
+    serverSelectionTimeoutMS: 10000,
+  })
   console.log("MongoDB connected")
 }
 
