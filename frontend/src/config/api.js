@@ -1,4 +1,6 @@
-export const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000"
+export const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || "https://food-delivery-eeef.onrender.com"
+).replace(/\/$/, "")
 
 export const readJsonResponse = async (response) => {
   const contentType = response.headers.get("content-type") || ""

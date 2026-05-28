@@ -37,9 +37,7 @@ function App() {
       <Navbar page={page} setPage={setPage} SetshowLogin={SetshowLogin} user={user} setUser={setUser} globalSearch={globalSearch} setGlobalSearch={setGlobalSearch}/>
       <Routes>
         <Route path="/" element={<Home globalSearch={globalSearch} setGlobalSearch={setGlobalSearch}/>}/>
-        <Route path='/cart' element={
-          <ProtectedRoute user={user}><Cart/></ProtectedRoute>
-        }/>
+        <Route path='/cart' element={<Cart/>}/>
         <Route path="/order" element={
           <ProtectedRoute user={user}><PlaceOrder setUser={setUser}/></ProtectedRoute>
         }/>

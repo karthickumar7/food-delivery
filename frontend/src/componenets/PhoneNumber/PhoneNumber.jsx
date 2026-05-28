@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { API_BASE_URL, readJsonResponse } from '../../config/api'
 import './PhoneNumber.css'
 
 const PhoneNumber = () => {
@@ -39,7 +40,7 @@ const PhoneNumber = () => {
 
       setLoading(true)
 
-      const response = await fetch('http://localhost:3000/phone', {
+      const response = await fetch(`${API_BASE_URL}/phone`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -49,7 +50,7 @@ const PhoneNumber = () => {
         })
       })
 
-      const data = await response.json()
+      const data = await readJsonResponse(response)
 
       if (data.success) {
 

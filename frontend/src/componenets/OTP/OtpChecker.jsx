@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
+import { API_BASE_URL, readJsonResponse } from '../../config/api'
 import "./OtpChecker.css"
 
 const OTP_DIGIT = 4;
@@ -73,7 +74,7 @@ const OtpChecker = ({ setUser }) => {
             setLoading(true)
 
             const response = await fetch(
-                "http://localhost:3000/otp",
+                `${API_BASE_URL}/otp`,
                 {
                     method: "POST",
                     headers: {
@@ -86,7 +87,7 @@ const OtpChecker = ({ setUser }) => {
                 }
             )
 
-            const data = await response.json()
+            const data = await readJsonResponse(response)
 
             if (data.success) {
 
