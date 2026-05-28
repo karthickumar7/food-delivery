@@ -8,6 +8,7 @@ import orderRouter from "./routes/orderRoute.js"
 const app = express()
 const PORT = process.env.PORT || 4000
 const otpStore = {};
+let dbConnectionError = ""
 mongoose.set("bufferCommands", false)
 
 app.use(cors())
@@ -22,6 +23,8 @@ app.get("/health", (req, res) => {
     success: true,
     api: "running",
     database: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+    mongoEnv: getMongoEnvName() || "missing",
+    dbConnectionError,
   })
 })
 
@@ -40,21 +43,29 @@ app.use("/api/users", requireDBConnection, userRouter)
 app.use("/api/orders", requireDBConnection, orderRouter)
 
 const connectDB = async () => {
-  const mongoUri = process.env.MONGO_URI?.trim()
+  const mongoEnvName = getMongoEnvName()
+  const mongoUri = mongoEnvName ? process.env[mongoEnvName]?.trim() : ""
 
   if (!mongoUri) {
-    console.log("MONGO_URI is not set. Server started without database connection.")
+    dbConnectionError = "MongoDB connection string env var is not set."
+    console.log("MONGO_URI, MONGODB_URI, or MONGODB_URL is not set. Server started without database connection.")
     return
   }
 
   await mongoose.connect(mongoUri, {
     serverSelectionTimeoutMS: 10000,
   })
+  dbConnectionError = ""
   console.log("MongoDB connected")
 }
 
+const getMongoEnvName = () => (
+  ["MONGO_URI", "MONGODB_URI", "MONGODB_URL"].find((envName) => process.env[envName]?.trim())
+)
+
 connectDB()
   .catch((error) => {
+    dbConnectionError = error.message
     console.error("MongoDB connection failed:", error.message)
   })
   .finally(() => {
